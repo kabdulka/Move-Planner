@@ -59,6 +59,26 @@ function loadData() {
 
     var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + cityInput + "&format=json&callback=wikiCallback";
 
+    $.ajax(wikiUrl, {
+        dataType: "jsonp",
+        type: "GET",
+        // could've put wikiUrl as a key value pair instead of passing it as a string parameter
+        success: function(response) {
+            console.log(response);
+            // var urlList = response[3];
+            var articleList = response[1];
+            for (var i = 0; i<articleList.length; i++) {
+                articleStr = articleList[i];
+                articleStr = articleStr.replace(/ /g, "_");
+                console.log("the article str is " + articleStr);
+                var url = "http://en.wikipedia.org/wiki/" + articleStr;
+                console.log("the  url is " + url);
+                // var urlStr =  urlList[i];
+                $wikiElem.append("<li> <a href=" + url + ">" + articleStr + "</a> </li>");
+
+            }
+        }
+    }); 
 
 };
 
