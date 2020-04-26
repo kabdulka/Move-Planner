@@ -34,6 +34,29 @@ function loadData() {
     var ntyAPIKey = "S3RrIAAUJO7qZMLl3GgCjPKAohBG3qa4";
     var ntyURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + cityInput + "&sort=newest" + "&api-key=" + ntyAPIKey;
 
+    $.getJSON(ntyURL, function(data) {
+        console.log(data);
+        articles = data.response.docs;
+        for (var i = 0; i<articles.length; i++) {
+            article = articles[i];
+            var liTag = $("<li> </li>");
+            liTag.addClass("article");
+            var aTag = $("<a> </a>");
+            var pTag = $("<p> </p>");
+            var url = article.web_url;
+            var headLine = article.headline.main;
+            var snippet = article.snippet;
+            aTag.attr("href", url);
+            aTag.text(headLine);
+            pTag.text(snippet);
+            $nytElem.append(liTag);
+            liTag.append(pTag);
+            liTag.append(aTag);
+        }
+    }).error(function(e){
+        $nytHeaderElem.text("This page could not be loaded");
+    });
+
 };
 
 
