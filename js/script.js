@@ -7,6 +7,15 @@ function loadData() {
     var $nytElem = $('#nytimes-articles');
     var $greeting = $('#greeting');
 
-    
+
+    $wikiElem.text("");
+    $nytElem.text("");
+
+    // load streetview here
+    var streetInput = $("#street").val();
+    var cityInput = $("#city").val();
+    var address = streetInput + ', ' + cityInput;
+    var apiKey = "AIzaSyCebedLJ9rvIByNJrQJAGv-y47zLIlf35k";
+    alert("printing test for street Input " + address);
 
 };
