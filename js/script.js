@@ -27,4 +27,24 @@ function loadData() {
    
     $nytHeaderElem.text("New York Times Articles about " + cityInput);
 
+    var articles;
+
+    // example call
+    // https://api.nytimes.com/svc/search/v2/articlesearch.json?q=new+york+times&page=2&sort=oldest&api-key=your-api-key
+    var ntyAPIKey = "S3RrIAAUJO7qZMLl3GgCjPKAohBG3qa4";
+    var ntyURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + cityInput + "&sort=newest" + "&api-key=" + ntyAPIKey;
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
