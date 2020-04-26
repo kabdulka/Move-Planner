@@ -85,6 +85,30 @@ function loadData() {
         }
     }); 
 
+    // Movie database API test
+    var movieDBApiKey = "45ed2d893632bb70caa1271878520ac5";
+    var movieUrl = "https://api.themoviedb.org/3/discover/movie?api_key=" + movieDBApiKey + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1";
+
+    // METHOD 1
+    // $.getJSON(movieUrl, function(data) {
+    //         console.log(data);
+    //         var myResult = data.results;
+    //         console.log("testing for: " + myResult[0].popularity);
+    // });
+
+    // METHOD 2 ($.ajax does the same thing as $.getJSON)
+    // $.getJSON just fetches data that is formated as JSON
+    // NOTE that $. and jQuery. are the same thing
+    jQuery.ajax(movieUrl, {
+        type: "GET",
+        dataType: "json",
+        success: function(response) {
+            console.log(response);
+        }
+    });
+
+    return false;
+
 };
 
 
