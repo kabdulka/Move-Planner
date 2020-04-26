@@ -57,6 +57,9 @@ function loadData() {
         $nytHeaderElem.text("This page could not be loaded");
     });
 
+    var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + cityInput + "&format=json&callback=wikiCallback";
+
+
 };
 
 
